@@ -1,4 +1,4 @@
-package backend
+package smartthings
 
 import (
 	"encoding/json"
@@ -10,7 +10,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func SwitchDeviceStatus(deviceid string) (*SwitchDeviceStatusData, error) {
+func (s SmartThingsConfig) SwitchDeviceStatus(deviceid string) (*SwitchDeviceStatusData, error) {
 
 	url := "https://api.smartthings.com/v1/devices/" + deviceid + "/status"
 
@@ -39,7 +39,7 @@ func SwitchDeviceStatus(deviceid string) (*SwitchDeviceStatusData, error) {
 	}
 	return &result, nil
 }
-func MotionDeviceStatus(deviceid string) (*MotionDeviceStatusData, error) {
+func (s SmartThingsConfig) MotionDeviceStatus(deviceid string) (*MotionDeviceStatusData, error) {
 
 	url := "https://api.smartthings.com/v1/devices/" + deviceid + "/status"
 	method := "GET"
@@ -70,7 +70,7 @@ func MotionDeviceStatus(deviceid string) (*MotionDeviceStatusData, error) {
 	}
 	return &result, nil
 }
-func ThermostatDeviceStatus(deviceid string) (*ThermostatDeviceStatusData, error) {
+func (s SmartThingsConfig) ThermostatDeviceStatus(deviceid string) (*ThermostatDeviceStatusData, error) {
 
 	url := "https://api.smartthings.com/v1/devices/" + deviceid + "/status"
 	method := "GET"
@@ -101,7 +101,7 @@ func ThermostatDeviceStatus(deviceid string) (*ThermostatDeviceStatusData, error
 	}
 	return &result, nil
 }
-func DoorDeviceStatus(deviceid string) (*DoorDeviceStatusData, error) {
+func (s SmartThingsConfig) DoorDeviceStatus(deviceid string) (*DoorDeviceStatusData, error) {
 
 	url := "https://api.smartthings.com/v1/devices/" + deviceid + "/status"
 	method := "GET"
@@ -131,7 +131,7 @@ func DoorDeviceStatus(deviceid string) (*DoorDeviceStatusData, error) {
 	}
 	return &result, nil
 }
-func GarageDeviceStatus(deviceid string) (*GarageDeviceStatusData, error) {
+func (s SmartThingsConfig) GarageDeviceStatus(deviceid string) (*GarageDeviceStatusData, error) {
 
 	url := "https://api.smartthings.com/v1/devices/" + deviceid + "/status"
 	method := "GET"

@@ -1,4 +1,4 @@
-package backend
+package smartthings
 
 import (
 	"encoding/json"
@@ -29,7 +29,7 @@ type DeviceData struct {
 	}
 }
 
-func ListSmartthingsDevices() (*DeviceData, error) {
+func (s SmartThingsConfig) ListSmartthingsDevices() (*DeviceData, error) {
 
 	payload := strings.NewReader(``)
 
@@ -58,7 +58,7 @@ func ListSmartthingsDevices() (*DeviceData, error) {
 	}
 	return &result, nil
 }
-func ListDevices(w http.ResponseWriter, r *http.Request) {
+func (s SmartThingsConfig) ListDevices(w http.ResponseWriter, r *http.Request) {
 
 	result, err := ListSmartthingsDevices()
 	if err != nil {

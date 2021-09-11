@@ -1,15 +1,17 @@
-package backend
+package smartthings
 
 import (
-	"homeServer/config"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strings"
-
-	log "github.com/sirupsen/logrus"
 )
 
-func SendCommandOff(deviceid string) {
+type SmartThingsConfig struct {
+	Token string
+}
+
+func (s SmartThingsConfig) SendCommandOff(deviceid string) error {
 
 	url := "https://api.smartthings.com/v1/devices/" + deviceid + "/commands"
 	method := "POST"
@@ -20,27 +22,26 @@ func SendCommandOff(deviceid string) {
 	req, err := http.NewRequest(method, url, payload)
 
 	if err != nil {
-		log.Debug(err)
-		return
+		return err
 	}
-	req.Header.Add("Authorization", "Bearer "+config.Global.SmarthingsToken)
+	req.Header.Add("Authorization", "Bearer "+s.Token)
 	req.Header.Add("Content-Type", "application/json")
 
 	res, err := client.Do(req)
 	if err != nil {
-		log.Debug(err)
-		return
+		return err
 	}
 	defer res.Body.Close()
 
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		log.Debug(err)
-		return
+		return err
 	}
-	log.Debug(string(body))
+	fmt.Println(string(body))
+
+	return nil
 }
-func SendCommandOn(deviceid string) {
+func (s SmartThingsConfig) SendCommandOn(deviceid string) error {
 
 	url := "https://api.smartthings.com/v1/devices/" + deviceid + "/commands"
 	method := "POST"
@@ -52,27 +53,26 @@ func SendCommandOn(deviceid string) {
 	req, err := http.NewRequest(method, url, payload)
 
 	if err != nil {
-		log.Debug(err)
-		return
+		return err
 	}
-	req.Header.Add("Authorization", "Bearer "+config.Global.SmarthingsToken)
+	req.Header.Add("Authorization", "Bearer "+s.Token)
 	req.Header.Add("Content-Type", "application/json")
 
 	res, err := client.Do(req)
 	if err != nil {
-		log.Debug(err)
-		return
+		return err
 	}
 	defer res.Body.Close()
 
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		log.Debug(err)
-		return
+		return err
 	}
-	log.Debug(string(body))
+	fmt.Println(string(body))
+
+	return nil
 }
-func ThermostatSendCommandOff(deviceid string) {
+func (s SmartThingsConfig) ThermostatSendCommandOff(deviceid string) error {
 
 	url := "https://api.smartthings.com/v1/devices/" + deviceid + "/commands"
 	method := "POST"
@@ -83,28 +83,26 @@ func ThermostatSendCommandOff(deviceid string) {
 	req, err := http.NewRequest(method, url, payload)
 
 	if err != nil {
-		log.Debug(err)
-		return
+		return err
 	}
-	req.Header.Add("Authorization", "Bearer "+config.Global.SmarthingsToken)
+	req.Header.Add("Authorization", "Bearer "+s.Token)
 	req.Header.Add("Content-Type", "application/json")
 
 	res, err := client.Do(req)
 	if err != nil {
-		log.Debug(err)
-		return
+		return err
 	}
 	defer res.Body.Close()
 
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		log.Debug(err)
-		return
+		return err
 	}
-	log.Debug(string(body))
+	fmt.Println(string(body))
 
+	return nil
 }
-func ThermostatSendCommandOn(deviceid string) {
+func (s SmartThingsConfig) ThermostatSendCommandOn(deviceid string) error {
 
 	url := "https://api.smartthings.com/v1/devices/" + deviceid + "/commands"
 	method := "POST"
@@ -115,24 +113,22 @@ func ThermostatSendCommandOn(deviceid string) {
 	req, err := http.NewRequest(method, url, payload)
 
 	if err != nil {
-		log.Debug(err)
-		return
+		return err
 	}
-	req.Header.Add("Authorization", "Bearer "+config.Global.SmarthingsToken)
+	req.Header.Add("Authorization", "Bearer "+s.Token)
 	req.Header.Add("Content-Type", "application/json")
 
 	res, err := client.Do(req)
 	if err != nil {
-		log.Debug(err)
-		return
+		return err
 	}
 	defer res.Body.Close()
 
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		log.Debug(err)
-		return
+		return err
 	}
-	log.Debug(string(body))
+	fmt.Println(string(body))
 
+	return nil
 }
