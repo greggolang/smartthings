@@ -1,8 +1,9 @@
 package smartthings
 
 import (
+	"cpadmin/config"
 	"encoding/json"
-	"homeServer/config"
+
 	"io/ioutil"
 	"net/http"
 	"strings"
@@ -21,7 +22,7 @@ func (s SmartThingsConfig) SwitchDeviceStatus(deviceid string) (*SwitchDeviceSta
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Add("Authorization", "Bearer "+config.Global.SmarthingsToken)
+	req.Header.Add("Authorization", "Bearer "+s.Token)
 
 	res, err := config.HTTPClient.Do(req)
 	if err != nil {
@@ -51,7 +52,7 @@ func (s SmartThingsConfig) MotionDeviceStatus(deviceid string) (*MotionDeviceSta
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Add("Authorization", "Bearer "+config.Global.SmarthingsToken)
+	req.Header.Add("Authorization", "Bearer "+s.Token)
 
 	res, err := config.HTTPClient.Do(req)
 	if err != nil {
@@ -82,7 +83,7 @@ func (s SmartThingsConfig) ThermostatDeviceStatus(deviceid string) (*ThermostatD
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Add("Authorization", "Bearer "+config.Global.SmarthingsToken)
+	req.Header.Add("Authorization", "Bearer "+s.Token)
 
 	res, err := config.HTTPClient.Do(req)
 	if err != nil {
@@ -113,7 +114,7 @@ func (s SmartThingsConfig) DoorDeviceStatus(deviceid string) (*DoorDeviceStatusD
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Add("Authorization", "Bearer "+config.Global.SmarthingsToken)
+	req.Header.Add("Authorization", "Bearer "+s.Token)
 
 	res, err := config.HTTPClient.Do(req)
 	if err != nil {
@@ -143,7 +144,7 @@ func (s SmartThingsConfig) GarageDeviceStatus(deviceid string) (*GarageDeviceSta
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Add("Authorization", "Bearer "+config.Global.SmarthingsToken)
+	req.Header.Add("Authorization", "Bearer "+s.Token)
 
 	res, err := config.HTTPClient.Do(req)
 	if err != nil {
