@@ -2,12 +2,11 @@ package smartthings
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 
 	"strings"
-
-	log "github.com/sirupsen/logrus"
 )
 
 func (s SmartThingsConfig) ListSmartthingsDevices() (*DeviceData, error) {
@@ -18,24 +17,24 @@ func (s SmartThingsConfig) ListSmartthingsDevices() (*DeviceData, error) {
 
 	req, err := http.NewRequest("GET", "https://api.smartthings.com/v1/devices", payload)
 	if err != nil {
-		log.Debug("Error on line 41 ListSmartthingsDevices:", err)
+		fmt.Println("Error on line 41 ListSmartthingsDevices:", err)
 	}
 	req.Header.Add("Authorization", "Bearer "+s.Token)
 
 	res, err := client.Do(req)
 	if err != nil {
-		log.Debug("Error on line 48 ListSmartthingsDevices:", err)
+		fmt.Println("Error on line 48 ListSmartthingsDevices:", err)
 	}
 	defer res.Body.Close()
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		log.Debug("Error on line 53 ListSmartthingsDevices:", err)
+		fmt.Println("Error on line 53 ListSmartthingsDevices:", err)
 	}
-	// log.Debug(string(body))
+	// fmt.Println(string(body))
 	var result DeviceData
 	json.Unmarshal(body, &result)
 	if err != nil {
-		log.Debug("Error on line 59 ListSmartthingsDevices:", err)
+		fmt.Println("Error on line 59 ListSmartthingsDevices:", err)
 	}
 	return &result, nil
 }
@@ -44,7 +43,7 @@ func (s SmartThingsConfig) ListSmartthingsDevices() (*DeviceData, error) {
 
 // 	result, err := ListSmartthingsDevices()
 // 	if err != nil {
-// 		log.Debug(err)
+// 		fmt.Println(err)
 // 	}
 // 	sort.Slice(result.Items, func(i, j int) bool {
 // 		return result.Items[i].LocationID < result.Items[j].LocationID
@@ -53,7 +52,7 @@ func (s SmartThingsConfig) ListSmartthingsDevices() (*DeviceData, error) {
 // 		deviceid := element.DeviceID
 // 		name := element.Label
 // 		location := ""
-// 		log.Debug("element.LocationID - ", element.LocationID)
+// 		fmt.Println("element.LocationID - ", element.LocationID)
 // 		if element.LocationID == "05cbd78c-11d8-4ea8-b2c5-50823a9aa470" {
 // 			location = "South Pasadena"
 // 		} else if element.LocationID == "1518f8a2-4ff4-4894-a06e-b3c28edfec69" {
@@ -61,7 +60,7 @@ func (s SmartThingsConfig) ListSmartthingsDevices() (*DeviceData, error) {
 // 		} else if element.LocationID == "b292c095-eade-43ee-acbd-f1a4236c7e07" {
 // 			location = "i3d"
 // 		}
-// 		log.Debug("Name: ", name, " ID: ", deviceid)
+// 		fmt.Println("Name: ", name, " ID: ", deviceid)
 // 		fmt.Fprint(w, "Location: ", location, " Name: ", name, "ID: ", deviceid, "\n")
 // 	}
 // }

@@ -3,12 +3,11 @@ package smartthings
 import (
 	"cpadmin/config"
 	"encoding/json"
+	"fmt"
 
 	"io/ioutil"
 	"net/http"
 	"strings"
-
-	log "github.com/sirupsen/logrus"
 )
 
 func (s SmartThingsConfig) SwitchDeviceStatus(deviceid string) (*SwitchDeviceStatusData, error) {
@@ -63,7 +62,7 @@ func (s SmartThingsConfig) MotionDeviceStatus(deviceid string) (*MotionDeviceSta
 	if err != nil {
 		return nil, err
 	}
-	log.Info(string(body))
+	fmt.Println(string(body))
 	var result MotionDeviceStatusData
 	json.Unmarshal(body, &result)
 	if err != nil {
@@ -94,7 +93,7 @@ func (s SmartThingsConfig) ThermostatDeviceStatus(deviceid string) (*ThermostatD
 	if err != nil {
 		return nil, err
 	}
-	log.Debug(string(body))
+	fmt.Println(string(body))
 	var result ThermostatDeviceStatusData
 	json.Unmarshal(body, &result)
 	if err != nil {
