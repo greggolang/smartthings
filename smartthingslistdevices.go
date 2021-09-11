@@ -38,29 +38,3 @@ func (s SmartThingsConfig) ListSmartthingsDevices() (*DeviceData, error) {
 	}
 	return &result, nil
 }
-
-// func ListDevices(w http.ResponseWriter, r *http.Request) {
-
-// 	result, err := ListSmartthingsDevices()
-// 	if err != nil {
-// 		fmt.Println(err)
-// 	}
-// 	sort.Slice(result.Items, func(i, j int) bool {
-// 		return result.Items[i].LocationID < result.Items[j].LocationID
-// 	})
-// 	for _, element := range result.Items {
-// 		deviceid := element.DeviceID
-// 		name := element.Label
-// 		location := ""
-// 		fmt.Println("element.LocationID - ", element.LocationID)
-// 		if element.LocationID == "05cbd78c-11d8-4ea8-b2c5-50823a9aa470" {
-// 			location = "South Pasadena"
-// 		} else if element.LocationID == "1518f8a2-4ff4-4894-a06e-b3c28edfec69" {
-// 			location = "Summerland"
-// 		} else if element.LocationID == "b292c095-eade-43ee-acbd-f1a4236c7e07" {
-// 			location = "i3d"
-// 		}
-// 		fmt.Println("Name: ", name, " ID: ", deviceid)
-// 		fmt.Fprint(w, "Location: ", location, " Name: ", name, "ID: ", deviceid, "\n")
-// 	}
-// }

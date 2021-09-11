@@ -1,23 +1,8 @@
 package smartthings
 
 import (
-	"net/http"
-	"net/http/cookiejar"
 	"time"
 )
-
-var HTTPClient *http.Client
-
-func InitHTTP() {
-	jar, _ := cookiejar.New(nil)
-	HTTPClient = &http.Client{
-		Transport: &http.Transport{
-			MaxIdleConnsPerHost: 64,
-			TLSHandshakeTimeout: 0 * time.Second,
-		},
-		Jar: jar,
-	}
-}
 
 type SwitchDeviceStatusData struct {
 	Components struct {
