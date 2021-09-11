@@ -1,7 +1,6 @@
 package smartthings
 
 import (
-	"cpadmin/config"
 	"encoding/json"
 	"fmt"
 
@@ -23,7 +22,7 @@ func (s SmartThingsConfig) SwitchDeviceStatus(deviceid string) (*SwitchDeviceSta
 	}
 	req.Header.Add("Authorization", "Bearer "+s.Token)
 
-	res, err := config.HTTPClient.Do(req)
+	res, err := HTTPClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
@@ -53,7 +52,7 @@ func (s SmartThingsConfig) MotionDeviceStatus(deviceid string) (*MotionDeviceSta
 	}
 	req.Header.Add("Authorization", "Bearer "+s.Token)
 
-	res, err := config.HTTPClient.Do(req)
+	res, err := HTTPClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
@@ -84,7 +83,7 @@ func (s SmartThingsConfig) ThermostatDeviceStatus(deviceid string) (*ThermostatD
 	}
 	req.Header.Add("Authorization", "Bearer "+s.Token)
 
-	res, err := config.HTTPClient.Do(req)
+	res, err := HTTPClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
@@ -115,7 +114,7 @@ func (s SmartThingsConfig) DoorDeviceStatus(deviceid string) (*DoorDeviceStatusD
 	}
 	req.Header.Add("Authorization", "Bearer "+s.Token)
 
-	res, err := config.HTTPClient.Do(req)
+	res, err := HTTPClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
@@ -145,7 +144,7 @@ func (s SmartThingsConfig) GarageDeviceStatus(deviceid string) (*GarageDeviceSta
 	}
 	req.Header.Add("Authorization", "Bearer "+s.Token)
 
-	res, err := config.HTTPClient.Do(req)
+	res, err := HTTPClient.Do(req)
 	if err != nil {
 		return nil, err
 	}
