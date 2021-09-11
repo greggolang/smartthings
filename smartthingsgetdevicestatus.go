@@ -1,9 +1,9 @@
 package smartthings
 
 import (
-	"cpadmin/config"
 	"encoding/json"
 	"fmt"
+	"homeServer/config"
 
 	"io/ioutil"
 	"net/http"
