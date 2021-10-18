@@ -37,7 +37,7 @@ func (s SmartThingsConfig) SendCommandOff(deviceid string) error {
 	if err != nil {
 		return err
 	}
-	fmt.Println(string(body))
+	//fmt.Println(string(body))
 
 	return nil
 }
